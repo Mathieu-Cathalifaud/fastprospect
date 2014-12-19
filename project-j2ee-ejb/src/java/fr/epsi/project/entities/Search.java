@@ -6,8 +6,8 @@
 package fr.epsi.project.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -64,14 +64,14 @@ public class Search implements Serializable {
         @JoinColumn(name = "idSearch", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "idUser", referencedColumnName = "id")})
     @ManyToMany
-    private List<User> userList;
+    private Collection<User> userCollection;
     @JoinTable(name = "SearchWebsite", joinColumns = {
         @JoinColumn(name = "idSearch", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "idWebsite", referencedColumnName = "id")})
     @ManyToMany
-    private List<Website> websiteList;
-    @ManyToMany(mappedBy = "searchList")
-    private List<Keyword> keywordList;
+    private Collection<Website> websiteCollection;
+    @ManyToMany(mappedBy = "searchCollection")
+    private Collection<Keyword> keywordCollection;
 
     public Search() {
     }
@@ -120,30 +120,30 @@ public class Search implements Serializable {
     }
 
     @XmlTransient
-    public List<User> getUserList() {
-        return userList;
+    public Collection<User> getUserCollection() {
+        return userCollection;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
-    }
-
-    @XmlTransient
-    public List<Website> getWebsiteList() {
-        return websiteList;
-    }
-
-    public void setWebsiteList(List<Website> websiteList) {
-        this.websiteList = websiteList;
+    public void setUserCollection(Collection<User> userCollection) {
+        this.userCollection = userCollection;
     }
 
     @XmlTransient
-    public List<Keyword> getKeywordList() {
-        return keywordList;
+    public Collection<Website> getWebsiteCollection() {
+        return websiteCollection;
     }
 
-    public void setKeywordList(List<Keyword> keywordList) {
-        this.keywordList = keywordList;
+    public void setWebsiteCollection(Collection<Website> websiteCollection) {
+        this.websiteCollection = websiteCollection;
+    }
+
+    @XmlTransient
+    public Collection<Keyword> getKeywordCollection() {
+        return keywordCollection;
+    }
+
+    public void setKeywordCollection(Collection<Keyword> keywordCollection) {
+        this.keywordCollection = keywordCollection;
     }
 
     @Override

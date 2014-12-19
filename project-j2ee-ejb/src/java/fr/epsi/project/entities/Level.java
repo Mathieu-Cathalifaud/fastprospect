@@ -6,7 +6,7 @@
 package fr.epsi.project.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -53,7 +53,7 @@ public class Level implements Serializable {
     @Column(name = "code")
     private String code;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idLevel")
-    private List<User> userList;
+    private Collection<User> userCollection;
 
     public Level() {
     }
@@ -93,12 +93,12 @@ public class Level implements Serializable {
     }
 
     @XmlTransient
-    public List<User> getUserList() {
-        return userList;
+    public Collection<User> getUserCollection() {
+        return userCollection;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUserCollection(Collection<User> userCollection) {
+        this.userCollection = userCollection;
     }
 
     @Override

@@ -6,7 +6,7 @@
 package fr.epsi.project.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -61,14 +61,14 @@ public class Email implements Serializable {
         @JoinColumn(name = "idEmail", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "idTemplate", referencedColumnName = "id")})
     @ManyToMany
-    private List<Template> templateList;
+    private Collection<Template> templateCollection;
     @OneToMany(mappedBy = "idEmail")
-    private List<Attachment> attachmentList;
+    private Collection<Attachment> attachmentCollection;
     @JoinColumn(name = "idUser", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User idUser;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "email")
-    private List<SendProspect> sendProspectList;
+    private Collection<SendProspect> sendProspectCollection;
 
     public Email() {
     }
@@ -108,21 +108,21 @@ public class Email implements Serializable {
     }
 
     @XmlTransient
-    public List<Template> getTemplateList() {
-        return templateList;
+    public Collection<Template> getTemplateCollection() {
+        return templateCollection;
     }
 
-    public void setTemplateList(List<Template> templateList) {
-        this.templateList = templateList;
+    public void setTemplateCollection(Collection<Template> templateCollection) {
+        this.templateCollection = templateCollection;
     }
 
     @XmlTransient
-    public List<Attachment> getAttachmentList() {
-        return attachmentList;
+    public Collection<Attachment> getAttachmentCollection() {
+        return attachmentCollection;
     }
 
-    public void setAttachmentList(List<Attachment> attachmentList) {
-        this.attachmentList = attachmentList;
+    public void setAttachmentCollection(Collection<Attachment> attachmentCollection) {
+        this.attachmentCollection = attachmentCollection;
     }
 
     public User getIdUser() {
@@ -134,12 +134,12 @@ public class Email implements Serializable {
     }
 
     @XmlTransient
-    public List<SendProspect> getSendProspectList() {
-        return sendProspectList;
+    public Collection<SendProspect> getSendProspectCollection() {
+        return sendProspectCollection;
     }
 
-    public void setSendProspectList(List<SendProspect> sendProspectList) {
-        this.sendProspectList = sendProspectList;
+    public void setSendProspectCollection(Collection<SendProspect> sendProspectCollection) {
+        this.sendProspectCollection = sendProspectCollection;
     }
 
     @Override

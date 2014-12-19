@@ -6,7 +6,7 @@
 package fr.epsi.project.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,9 +54,9 @@ public class Prospect implements Serializable {
         @JoinColumn(name = "idProspect", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "idWebsite", referencedColumnName = "id")})
     @ManyToMany
-    private List<Website> websiteList;
+    private Collection<Website> websiteCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "prospect")
-    private List<SendProspect> sendProspectList;
+    private Collection<SendProspect> sendProspectCollection;
 
     public Prospect() {
     }
@@ -87,21 +87,21 @@ public class Prospect implements Serializable {
     }
 
     @XmlTransient
-    public List<Website> getWebsiteList() {
-        return websiteList;
+    public Collection<Website> getWebsiteCollection() {
+        return websiteCollection;
     }
 
-    public void setWebsiteList(List<Website> websiteList) {
-        this.websiteList = websiteList;
+    public void setWebsiteCollection(Collection<Website> websiteCollection) {
+        this.websiteCollection = websiteCollection;
     }
 
     @XmlTransient
-    public List<SendProspect> getSendProspectList() {
-        return sendProspectList;
+    public Collection<SendProspect> getSendProspectCollection() {
+        return sendProspectCollection;
     }
 
-    public void setSendProspectList(List<SendProspect> sendProspectList) {
-        this.sendProspectList = sendProspectList;
+    public void setSendProspectCollection(Collection<SendProspect> sendProspectCollection) {
+        this.sendProspectCollection = sendProspectCollection;
     }
 
     @Override

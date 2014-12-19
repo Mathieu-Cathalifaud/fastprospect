@@ -6,7 +6,7 @@
 package fr.epsi.project.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,7 +51,7 @@ public class Keyword implements Serializable {
         @JoinColumn(name = "idKeyword", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "idSearch", referencedColumnName = "id")})
     @ManyToMany
-    private List<Search> searchList;
+    private Collection<Search> searchCollection;
 
     public Keyword() {
     }
@@ -82,12 +82,12 @@ public class Keyword implements Serializable {
     }
 
     @XmlTransient
-    public List<Search> getSearchList() {
-        return searchList;
+    public Collection<Search> getSearchCollection() {
+        return searchCollection;
     }
 
-    public void setSearchList(List<Search> searchList) {
-        this.searchList = searchList;
+    public void setSearchCollection(Collection<Search> searchCollection) {
+        this.searchCollection = searchCollection;
     }
 
     @Override

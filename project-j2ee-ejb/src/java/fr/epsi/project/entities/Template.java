@@ -6,8 +6,8 @@
 package fr.epsi.project.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -65,8 +65,8 @@ public class Template implements Serializable {
     @Column(name = "d_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dUpdate;
-    @ManyToMany(mappedBy = "templateList")
-    private List<Email> emailList;
+    @ManyToMany(mappedBy = "templateCollection")
+    private Collection<Email> emailCollection;
     @JoinColumn(name = "idUser", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User idUser;
@@ -125,12 +125,12 @@ public class Template implements Serializable {
     }
 
     @XmlTransient
-    public List<Email> getEmailList() {
-        return emailList;
+    public Collection<Email> getEmailCollection() {
+        return emailCollection;
     }
 
-    public void setEmailList(List<Email> emailList) {
-        this.emailList = emailList;
+    public void setEmailCollection(Collection<Email> emailCollection) {
+        this.emailCollection = emailCollection;
     }
 
     public User getIdUser() {

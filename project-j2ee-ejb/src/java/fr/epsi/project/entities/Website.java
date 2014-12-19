@@ -6,8 +6,8 @@
 package fr.epsi.project.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -66,10 +66,10 @@ public class Website implements Serializable {
     @Column(name = "d_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dUpdate;
-    @ManyToMany(mappedBy = "websiteList")
-    private List<Prospect> prospectList;
-    @ManyToMany(mappedBy = "websiteList")
-    private List<Search> searchList;
+    @ManyToMany(mappedBy = "websiteCollection")
+    private Collection<Prospect> prospectCollection;
+    @ManyToMany(mappedBy = "websiteCollection")
+    private Collection<Search> searchCollection;
 
     public Website() {
     }
@@ -127,21 +127,21 @@ public class Website implements Serializable {
     }
 
     @XmlTransient
-    public List<Prospect> getProspectList() {
-        return prospectList;
+    public Collection<Prospect> getProspectCollection() {
+        return prospectCollection;
     }
 
-    public void setProspectList(List<Prospect> prospectList) {
-        this.prospectList = prospectList;
+    public void setProspectCollection(Collection<Prospect> prospectCollection) {
+        this.prospectCollection = prospectCollection;
     }
 
     @XmlTransient
-    public List<Search> getSearchList() {
-        return searchList;
+    public Collection<Search> getSearchCollection() {
+        return searchCollection;
     }
 
-    public void setSearchList(List<Search> searchList) {
-        this.searchList = searchList;
+    public void setSearchCollection(Collection<Search> searchCollection) {
+        this.searchCollection = searchCollection;
     }
 
     @Override

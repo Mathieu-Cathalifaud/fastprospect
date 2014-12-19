@@ -6,8 +6,8 @@
 package fr.epsi.project.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -95,17 +95,17 @@ public class User implements Serializable {
     @Column(name = "d_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dUpdate;
-    @ManyToMany(mappedBy = "userList")
-    private List<Search> searchList;
-    @ManyToMany(mappedBy = "userList")
-    private List<Subscription> subscriptionList;
+    @ManyToMany(mappedBy = "userCollection")
+    private Collection<Search> searchCollection;
+    @ManyToMany(mappedBy = "userCollection")
+    private Collection<Subscription> subscriptionCollection;
     @JoinColumn(name = "idLevel", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Level idLevel;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUser")
-    private List<Email> emailList;
+    private Collection<Email> emailCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUser")
-    private List<Template> templateList;
+    private Collection<Template> templateCollection;
 
     public User() {
     }
@@ -199,21 +199,21 @@ public class User implements Serializable {
     }
 
     @XmlTransient
-    public List<Search> getSearchList() {
-        return searchList;
+    public Collection<Search> getSearchCollection() {
+        return searchCollection;
     }
 
-    public void setSearchList(List<Search> searchList) {
-        this.searchList = searchList;
+    public void setSearchCollection(Collection<Search> searchCollection) {
+        this.searchCollection = searchCollection;
     }
 
     @XmlTransient
-    public List<Subscription> getSubscriptionList() {
-        return subscriptionList;
+    public Collection<Subscription> getSubscriptionCollection() {
+        return subscriptionCollection;
     }
 
-    public void setSubscriptionList(List<Subscription> subscriptionList) {
-        this.subscriptionList = subscriptionList;
+    public void setSubscriptionCollection(Collection<Subscription> subscriptionCollection) {
+        this.subscriptionCollection = subscriptionCollection;
     }
 
     public Level getIdLevel() {
@@ -225,21 +225,21 @@ public class User implements Serializable {
     }
 
     @XmlTransient
-    public List<Email> getEmailList() {
-        return emailList;
+    public Collection<Email> getEmailCollection() {
+        return emailCollection;
     }
 
-    public void setEmailList(List<Email> emailList) {
-        this.emailList = emailList;
+    public void setEmailCollection(Collection<Email> emailCollection) {
+        this.emailCollection = emailCollection;
     }
 
     @XmlTransient
-    public List<Template> getTemplateList() {
-        return templateList;
+    public Collection<Template> getTemplateCollection() {
+        return templateCollection;
     }
 
-    public void setTemplateList(List<Template> templateList) {
-        this.templateList = templateList;
+    public void setTemplateCollection(Collection<Template> templateCollection) {
+        this.templateCollection = templateCollection;
     }
 
     @Override

@@ -6,7 +6,7 @@
 package fr.epsi.project.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -69,7 +69,7 @@ public class Subscription implements Serializable {
         @JoinColumn(name = "idSubscriptions", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "idUser", referencedColumnName = "id")})
     @ManyToMany
-    private List<User> userList;
+    private Collection<User> userCollection;
 
     public Subscription() {
     }
@@ -127,12 +127,12 @@ public class Subscription implements Serializable {
     }
 
     @XmlTransient
-    public List<User> getUserList() {
-        return userList;
+    public Collection<User> getUserCollection() {
+        return userCollection;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUserCollection(Collection<User> userCollection) {
+        this.userCollection = userCollection;
     }
 
     @Override
