@@ -6,10 +6,13 @@
 
 package fr.epsi.project.controllers;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author octavechaudiere
  */
 public class HtmlParserController {
     
+    private ArrayList<String> wsList;
 }
